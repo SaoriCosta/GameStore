@@ -7,52 +7,57 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import br.com.gamestore.entidades.Categoria;
 import br.com.gamestore.entidades.Produto;
-import br.com.gamestore.persistences.ProdutoManager;
+import br.com.gamestore.entidades.Usuario;
+import br.com.gamestore.persistences.CarrinhoManager;
 
 
-@WebServlet("/produto")
-public class ProdutoServlet extends HttpServlet {
+@WebServlet("/carrinho")
+public class CarrinhoServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    public ProdutoServlet() {
+    
+    public CarrinhoServlet() {
         super();
         
     }
 
-	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+		
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-		String nome, descricao, categoria;
+		
+		String nome, descricao;
 		double preco;
 		boolean promocao;
+		Categoria categoria;
 		
 		nome = request.getParameter("nome");
 		descricao = request.getParameter("descricao");
-	    //categoria = request.getParameter("categoria");
 		preco = Double.parseDouble(request.getParameter("preco"));
-		promocao = Boolean.parseBoolean(request.getParameter("promocao")) ;
+		promocao = Boolean.parseBoolean(request.getParameter("promocao"));
 		
-		Produto produto = new Produto();
+		Produto p = new Produto();
 		
-		produto.setNome(nome);
-		produto.setDescricao(descricao);
-		//produto.setCategoria(categoria);
-		produto.setPreco(preco);
-		produto.setPromocao(promocao);
+		p.setNome(nome);
+		p.setDescricao(descricao);
+		p.setPreco(preco);
+		p.setPromocao(promocao);
 		
-		ProdutoManager.addProduto(produto);
 		
+		Usuario user = (Usuario)request.getSession().getAttribute("user");
+		if(CarrinhoManager.getCarrinho().get(user)!= null)
+			request.setAttribute("qtd", CarrinhoManager.getCarrinho().get(user.getCpf()).size());
+		
+		CarrinhoManager.addCarrinho(user, p);
+		request.setAttribute("qtd", CarrinhoManager.getCarrinho().get(user.getCpf()).size());
 		request.getRequestDispatcher("/index.jsp").forward(request, response);
 		
-		
-		//		doGet(request, response);
+		//doGet(request, response);
 	}
 
 }

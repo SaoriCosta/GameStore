@@ -13,7 +13,6 @@
     <exception-type>br.com.gamestore.exceptions.CadastroException</exception-type>
     <location>/errocadastro.html</location>
   </error-page>
-  
   <error-page>
     <exception-type>br.com.gamestore.exceptions.InexistenteException</exception-type>
     <location>/erroinexistente.html</location>

@@ -6,11 +6,12 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<%@ taglib uri='http://java.sun.com/jsp/jstl/core' prefix='c'%> 
+<%@ taglib uri='http://java.sun.com/jsp/jstl/core' prefix='c'%>
 <title>Inicio</title>
 </head>
 <body>
-
+	Bem vindo : ${user.getNome()}
+	
 	<div>
 
 		<form action="login" method="post">
@@ -19,8 +20,9 @@
 			<button type="submit">Login</button>
 			<a href="cadastro.jsp">Cadastre-se</a>
 		</form>
-	
+
 	</div>
+	<a href="carrinho.jsp">Carrinho : ${qtd}</a>
 	<hr>
 
 	<ul>
@@ -30,17 +32,29 @@
 		<li><a href="#">Categorias</a></li>
 		<li><a href="#">Contato</a></li>
 	</ul>
-	<table style="width:100%;">
+	<table style="width: 100%;">
+			<c:forEach var="i" items="${ProdutoManager.getProduto().keySet()}">
+				<form action="carrinho" method="Post">
+					<input type="hidden" name="nome"
+						value="${ProdutoManager.getProduto().get(i).getNome()}"> <input
+						type="hidden" name="descricao"
+						value="${ProdutoManager.getProduto().get(i).getDescricao()}">
+					<input type="hidden" name="preco"
+						value="${ProdutoManager.getProduto().get(i).getPreco()}">
+					<input type="hidden" name="promocao"
+						value="${ProdutoManager.getProduto().get(i).isPromocao()}">
+
+					<tr>
+						<td>${ProdutoManager.getProduto().get(i).getNome()}</td>
+						<td>${ProdutoManager.getProduto().get(i).getDescricao()}</td>
+						<td>${ProdutoManager.getProduto().get(i).getPreco()}</td>
+						<td><button type="submit">Colocar no Carrinho</button>
+							<br></td>
+					</tr>
+				</form>
+			</c:forEach>
+		
 	
-	<% for(Integer p : ProdutoManager.getProduto().keySet()){%>
-		<tr>
-			<td><%=ProdutoManager.getProduto().get(p).getNome()%></td>
-		
-			<td><%=ProdutoManager.getProduto().get(p).getDescricao()%></td>
-		
-			<td><%=ProdutoManager.getProduto().get(p).getPreco()%></td>
-			<td><button >Colocar no Carrinho</button><br></td>
-		</tr>	
-	<% } %>
+	</table>
 </body>
 </html>
