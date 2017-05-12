@@ -32,7 +32,8 @@
 		<li><a href="#">Categorias</a></li>
 		<li><a href="#">Contato</a></li>
 	</ul>
-	<table style="width: 100%;">
+	<table style="width: 100%;">	
+	
 			<c:forEach var="i" items="${ProdutoManager.getProduto().keySet()}">
 				<form action="carrinho" method="Post">
 					<input type="hidden" name="nome"

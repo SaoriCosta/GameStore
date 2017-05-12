@@ -42,12 +42,12 @@ public class LoginServlet extends HttpServlet {
 					request.getRequestDispatcher("/index.jsp").forward(request, response);
 				}else{
 					request.setAttribute("erro", "Senha Inválida");
-					request.getRequestDispatcher("/login.jsp").forward(request, response);
+					request.getRequestDispatcher("/index.jsp").forward(request, response);
 				}
 			}else if(AdminManager.getAdmin().containsKey(email)){
 				if(AdminManager.getAdmin().get(email).getSenha().equals(senha)){
 					request.getSession().setAttribute("user", AdminManager.getAdmin().get(email));
-					request.getRequestDispatcher("/admin/index.jsp").forward(request, response);
+					request.getRequestDispatcher("/administrator/index.jsp").forward(request, response);
 				}else{
 					request.setAttribute("erro", "Senha Inválida");
 					request.getRequestDispatcher("/login.jsp").forward(request, response);
@@ -58,7 +58,7 @@ public class LoginServlet extends HttpServlet {
 			}
 		
 		}else{
-			request.getRequestDispatcher("/login.jsp").forward(request, response);
+			request.getRequestDispatcher("/index.jsp").forward(request, response);
 		}
 			
 		
