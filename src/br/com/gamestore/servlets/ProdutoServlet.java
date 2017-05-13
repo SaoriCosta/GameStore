@@ -1,5 +1,6 @@
 package br.com.gamestore.servlets;
 
+import java.awt.Image;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import br.com.gamestore.entidades.Produto;
 import br.com.gamestore.persistences.ProdutoManager;
+
 
 
 @WebServlet("/produto")
@@ -23,29 +25,35 @@ public class ProdutoServlet extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		doPost(request, response);
 	}
 
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		String nome, descricao, categoria;
+		String nome, descricao, categoria,codigo;
 		double preco;
 		boolean promocao;
+		
+	
 		
 		nome = request.getParameter("nome");
 		descricao = request.getParameter("descricao");
 	    //categoria = request.getParameter("categoria");
 		preco = Double.parseDouble(request.getParameter("preco"));
 		promocao = Boolean.parseBoolean(request.getParameter("promocao")) ;
+		codigo = request.getParameter("codigo");
 		
 		Produto produto = new Produto();
 		
 		produto.setNome(nome);
 		produto.setDescricao(descricao);
 		//produto.setCategoria(categoria);
+		
 		produto.setPreco(preco);
 		produto.setPromocao(promocao);
+		produto.setCodigo(codigo);
+		
 		
 		ProdutoManager.addProduto(produto);
 		
