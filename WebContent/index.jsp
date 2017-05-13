@@ -11,23 +11,36 @@
 <link rel="stylesheet" href="css/bootstrap-3.3.7-dist/css/bootstrap.css">
 <link rel="stylesheet"
 	href="css/bootstrap-3.3.7-dist/css/bootstrap-theme.css">
-
+ <script src="css/bootstrap-3.3.7-dist/js/jquery.min.js"></script>
 <script src="css/bootstrap-3.3.7-dist/js/npm.js"></script>
 
 <script src="css/bootstrap-3.3.7-dist/js/bootstrap.js"></script>
 
+<script type="text/javascript">
+
+	$('#myModal').on('shown.bs.modal', function () {
+		  $('#myInput').focus()
+		})
+	
+</script>
+
+
 <title>Inicio</title>
 </head>
-<body>
-	<label>Bem vindo : ${user.getNome()}</label>
-	
+<body style="background:#000;">
+	<c:if test="${user != null }">
+	<label style="color:#fff;">Bem vindo : ${user.getNome()}</label>
+	<a class="pull-right" href="carrinho.jsp">Carrinho : ${qtd}</a>
+	</c:if>
+	<button style="background:#fff;color:#000;" type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-sm">
+	<span class="glyphicon glyphicon-log-in" aria-hidden="true"></span> Login / Cadastre-se</button>
 
 <br>
-		<a href="carrinho.jsp">Carrinho : ${qtd}</a>
+		
 
 	<div class="row">
 		<div class="col-md-12">
-<nav class="navbar navbar-inverse">
+<nav class="navbar navbar-inverse" style="background:#01579b;color:#fff;">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
@@ -37,27 +50,27 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">GameStore</a>
+      <a style="color:#fff;" class="navbar-brand white-text" href="#">GameStore</a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="#">Home<span class="sr-only">(current)</span></a></li>
-        <li><a href="#">Sobre</a></li>
-         <li><a href="#">Produtos</a></li>
+        <li class="active"><a style="color:#fff;" href="#">Home<span class="sr-only">(current)</span></a></li>
+        <li><a style="color:#fff;" href="#">Sobre</a></li>
+         <li><a style="color:#fff;" href="#">Produtos</a></li>
         <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Categorias <span class="caret"></span></a>
+          <a style="color:#fff;" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Categorias <span class="caret"></span></a>
           <ul class="dropdown-menu">
             <li><a href="#">Ação</a></li>
-            <li><a href="#">Aventura</a></li>
+            <li><a  href="#">Aventura</a></li>
             <li><a href="#">Terror</a></li>
-             <li><a href="#">Suspense</a></li
-              <li><a href="#">Drama</a></li>
+             <li><a href="#">Suspense</a></li>
+              <li><a  href="#">Drama</a></li>
             <li role="separator" class="divider"></li>
-            <li><a href="#">Separated link</a></li>
+            <li><a  href="#">Separated link</a></li>
             <li role="separator" class="divider"></li>
-            <li><a href="#">One more separated link</a></li>
+            <li><a  href="#">One more separated link</a></li>
           </ul>
         </li>
       </ul>
@@ -85,15 +98,21 @@
   </div><!-- /.container-fluid -->
 </nav>
 			</div>
-<hr>
 		</div>
 	</div>	
-	<div class="row">
+	
+		
+	<!-- Small modal -->
+
+
+<div id="myModel" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+  <div class="modal-dialog modal-sm" role="document">
+    <div class="modal-content">
+      	<div class="row">
+      	<div class="col-md-1"></div>
 		<div class="col-md-10">
-		</div>
-		<div class="col-md-2">
 			<div>
-				
+				<label><h2 class="text-center">Login</h2></label>
 				<form action="login" method="post">
 					<input class="form-control" type="email" name="email"
 						placeholder="Email"> <input class="form-control"
@@ -104,11 +123,13 @@
 
 			</div>
 		</div>
+		<div class="col-md-1"></div>
 	</div>	
-		
-
-
+    </div>
+  </div>
+</div>
 	
+	<img src="images/Resident-Evil-7-Art.jpg" style="width:100%;" class="img-responsive">
 		<br>
 
 
