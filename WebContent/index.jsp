@@ -52,7 +52,7 @@
             <li><a href="#">Ação</a></li>
             <li><a href="#">Aventura</a></li>
             <li><a href="#">Terror</a></li>
-             <li><a href="#">Suspense</a></li
+             <li><a href="#">Suspense</a></li>
               <li><a href="#">Drama</a></li>
             <li role="separator" class="divider"></li>
             <li><a href="#">Separated link</a></li>
