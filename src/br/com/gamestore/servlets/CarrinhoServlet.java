@@ -55,6 +55,7 @@ public class CarrinhoServlet extends HttpServlet {
 		
 		CarrinhoManager.addCarrinho(user, p);
 		request.setAttribute("qtd", CarrinhoManager.getCarrinho().get(user.getCpf()).size());
+		
 		request.getRequestDispatcher("/index.jsp").forward(request, response);
 		
 		//doGet(request, response);
