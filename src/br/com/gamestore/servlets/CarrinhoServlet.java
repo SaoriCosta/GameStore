@@ -35,11 +35,14 @@ public class CarrinhoServlet extends HttpServlet {
 		double preco;
 		boolean promocao;
 		Categoria categoria;
+		String codigo;
+		
 		
 		nome = request.getParameter("nome");
 		descricao = request.getParameter("descricao");
 		preco = Double.parseDouble(request.getParameter("preco"));
 		promocao = Boolean.parseBoolean(request.getParameter("promocao"));
+		codigo = request.getParameter("codigo");
 		
 		Produto p = new Produto();
 		
@@ -47,7 +50,7 @@ public class CarrinhoServlet extends HttpServlet {
 		p.setDescricao(descricao);
 		p.setPreco(preco);
 		p.setPromocao(promocao);
-		
+		p.setCodigo(codigo);
 		
 		Usuario user = (Usuario)request.getSession().getAttribute("user");
 		if(CarrinhoManager.getCarrinho().get(user)!= null)

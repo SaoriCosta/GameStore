@@ -204,6 +204,8 @@
 						<div class="caption">
 
 							<form action="carrinho" method="Post">
+							<input type="hidden" name="codigo"
+									value="${bean.getProduto().get(i).getCodigo()}">
 								<input type="hidden" name="nome"
 									value="${bean.getProduto().get(i).getNome()}"> <input
 									type="hidden" name="descricao"

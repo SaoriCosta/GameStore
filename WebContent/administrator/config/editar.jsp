@@ -10,7 +10,7 @@
 
 <div>
 		<form action="../../produto" method="post" >
-			<input type="hidden" name="nome" placeholder="Nome" value="${param.cod}"><br>
+			<input type="hidden" name="codigo" placeholder="Nome" value="${param.cod}"><br>
 			<input type="text" name="nome" placeholder="Nome" value="${param.nome}"><br>
 			<input type="text" name="descricao" placeholder="Descrição" value="${param.descricao}"><br>
 			<input type="text" name="preco" placeholder="Preço" value="${param.preco}"><br>

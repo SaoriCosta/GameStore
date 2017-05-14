@@ -25,7 +25,7 @@ public class AdminFilter implements Filter {
 		HttpServletRequest httpsr = (HttpServletRequest)request;
 		
 		if(httpsr.getSession().getAttribute("admin") == null){
-			request.getRequestDispatcher("login.jsp").forward(request, response);
+			request.getRequestDispatcher("/login.jsp").forward(request, response);
 		}
 		
 		chain.doFilter(request, response);

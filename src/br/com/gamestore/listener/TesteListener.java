@@ -21,8 +21,8 @@ public class TesteListener implements ServletContextListener {
     public void contextInitialized(ServletContextEvent arg0)  { 
     	Administrador padrao = new Administrador();
     	
-    	padrao.setEmail("root@email.com");
-    	padrao.setSenha("@admin_123");
+    	padrao.setEmail("root@e");
+    	padrao.setSenha("123");
     	
     	AdminManager.addAdmin(padrao);
     	
@@ -32,7 +32,7 @@ public class TesteListener implements ServletContextListener {
     	p1.setCodigo("001");
     	p1.setDescricao("Oh loko");
     	p1.setPreco(123);
-        
+       
     	
     	
     	ProdutoManager.addProduto(p1);
