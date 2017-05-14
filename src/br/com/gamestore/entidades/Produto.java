@@ -1,6 +1,7 @@
 package br.com.gamestore.entidades;
 
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 
 public class Produto {
 	
@@ -17,14 +18,14 @@ public class Produto {
 	private Categoria categoria;
 	private double preco;
 	private boolean promocao;
-	private Image image;
+	private ImageView image;
 	
 	
-	public Image getImage() {
+	public ImageView getImage() {
 		return image;
 	}
-	public void setImage(Image image) {
-		this.image = image;
+	public void setImage(ImageView imageView) {
+		this.image = imageView;
 	}
 	public String getNome() {
 		return nome;

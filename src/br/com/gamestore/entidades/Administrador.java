@@ -6,6 +6,7 @@ public class Administrador {
 	private String senha;
 	private int id;
 	private String cpf;
+	private String email;
 	
 	public String getNome() {
 		return nome;
@@ -31,5 +32,13 @@ public class Administrador {
 	public void setCpf(String cpf) {
 		this.cpf = cpf;
 	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	
+	
 
 }

@@ -17,4 +17,8 @@
     <exception-type>br.com.gamestore.exceptions.InexistenteException</exception-type>
     <location>/erroinexistente.html</location>
   </error-page>
+  <error-page>
+    <exception-type>br.com.gamestore.exceptions.CarrinhoException</exception-type>
+    <location>/carrinhoVazio.html</location>
+  </error-page>
 </web-app>

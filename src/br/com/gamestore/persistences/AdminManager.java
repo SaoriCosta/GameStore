@@ -17,14 +17,11 @@ public class AdminManager {
 	}
 	
 	public static void addAdmin(Administrador administrador){
-			if(admin.containsKey(administrador.getCpf())){
-				administrador.setCpf(admin.get(administrador.getCpf()).getCpf());
-				admin.put(administrador.getCpf(), administrador);
+			if(admin.containsKey(administrador.getEmail())){
+				administrador.setEmail(admin.get(administrador.getEmail()).getEmail());
+				admin.put(administrador.getEmail(), administrador);
 			}else{
-				admin.put(administrador.getCpf(), administrador);
+				admin.put(administrador.getEmail(), administrador);
 			}
 	}
-	
-	
-	
 }

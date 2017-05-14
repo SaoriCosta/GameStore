@@ -60,7 +60,7 @@
 			<td>Descrição : ${bean.getProduto().get(i).getDescricao()}</td>
 			<td>Preço : ${bean.getProduto().get(i).getPreco()}</td>
 			<td>Promoção : ${bean.getProduto().get(i).isPromocao()}</td>
-			<td><a class="btn btn-danger" href="../removeProduto?id=${bean.getProduto().get(i).getId()}"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a></td>
+			<td><a class="btn btn-danger" href="../removeProduto?id=${bean.getProduto().get(i).getCodigo()}"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a></td>
 			
 			<td><a class="btn btn-warning" href="config/editar.jsp?cod=${bean.getProduto().get(i).getCodigo()}&nome=${bean.getProduto().get(i).getNome()}&descricao=${bean.getProduto().get(i).getDescricao()}&&preco=${bean.getProduto().get(i).getPreco()}&promocao=${bean.getProduto().get(i).isPromocao()}"><span class=" glyphicon glyphicon-pencil" aria-hidden="true"></span></a></a></td>
 		</tr>

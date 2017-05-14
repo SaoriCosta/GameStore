@@ -1,3 +1,4 @@
+<%@page import="br.com.gamestore.entidades.Administrador"%>
 <%@page import="br.com.gamestore.entidades.Produto"%>
 <%@page import="br.com.gamestore.persistences.ProdutoManager"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
@@ -20,30 +21,39 @@
 	$('#myModal').on('shown.bs.modal', function() {
 		$('#myInput').focus()
 	})
+
+	$('a[data-toggle="tab"]').on('shown.bs.tab', function(e) {
+		e.target // newly activated tab
+		e.relatedTarget // previous active tab
+	})
 </script>
 
 
 <title>Inicio</title>
 </head>
 <body style="background: #000;">
+
 	<c:if test="${user != null }">
 		<label style="color: #fff;">Bem vindo : ${user.getNome()}</label>
-		<a class="pull-right" href="carrinho.jsp">Carrinho : ${qtd}</a>
+		<a style="color: #616161;" class="btn btn-default pull-right"
+			href="carrinho.jsp">Carrinho : <span class="badge">${qtd}</span>
+			<span class="glyphicon glyphicon-shopping-cart white"
+			aria-hidden="true"></span>
+		</a>
 	</c:if>
-	<button style="background: #fff; color: #000;" type="button"
-		class="btn btn-primary" data-toggle="modal"
-		data-target=".bs-example-modal-sm">
-		<span class="glyphicon glyphicon-log-in" aria-hidden="true"></span>
-		Login / Cadastre-se
-	</button>
-
-	<br>
-
+	<c:if test="${user == null }">
+		<button style="background: #fff; color: #000;" type="button"
+			class="btn btn-primary pull-right" data-toggle="modal"
+			data-target=".bs-example-modal-sm">
+			<span class="glyphicon glyphicon-log-in" aria-hidden="true"></span>
+			Login / Cadastre-se
+		</button>
+	</c:if>
 
 	<div class="row">
 		<div class="col-md-12">
 			<nav class="navbar navbar-inverse"
-				style="background:#01579b;color:#fff;">
+				style="background:#fff;color:#fff;">
 			<div class="container-fluid">
 				<!-- Brand and toggle get grouped for better mobile display -->
 				<div class="navbar-header">
@@ -54,7 +64,7 @@
 							class="icon-bar"></span> <span class="icon-bar"></span> <span
 							class="icon-bar"></span>
 					</button>
-					<a style="color: #fff;" class="navbar-brand white-text" href="#">GameStore</a>
+					<a style="color: #000;" class="navbar-brand white-text" href="#">GameStore</a>
 				</div>
 
 				<!-- Collect the nav links, forms, and other content for toggling -->
@@ -63,9 +73,9 @@
 					<ul class="nav navbar-nav">
 						<li class="active"><a style="color: #fff;" href="#">Home<span
 								class="sr-only">(current)</span></a></li>
-						<li><a style="color: #fff;" href="#">Sobre</a></li>
-						<li><a style="color: #fff;" href="#">Produtos</a></li>
-						<li class="dropdown"><a style="color: #fff;" href="#"
+						<li><a style="color: #000;" href="#">Sobre</a></li>
+						<li><a style="color: #000;" href="#">Produtos</a></li>
+						<li class="dropdown"><a style="color: #000;" href="#"
 							class="dropdown-toggle" data-toggle="dropdown" role="button"
 							aria-haspopup="true" aria-expanded="false">Categorias <span
 								class="caret"></span></a>
@@ -142,50 +152,88 @@
 		</div>
 	</div>
 
-	<img src="images/Resident-Evil-7-Art.jpg" style="width: 100%;"
-		class="img-responsive">
-	<br>
+	<div id="carousel-example-generic" class="carousel slide"
+		data-ride="carousel">
+		<!-- Indicators -->
+		<ol class="carousel-indicators">
+			<li data-target="#carousel-example-generic" data-slide-to="0"
+				class="active"></li>
+			<li data-target="#carousel-example-generic" data-slide-to="1"></li>
+			<li data-target="#carousel-example-generic" data-slide-to="2"></li>
+		</ol>
 
-	<div class="row">
-	
-	<jsp:useBean id="bean" class = "br.com.gamestore.persistences.ProdutoManager"></jsp:useBean> 
-	
-	<c:forEach var = "i" items = "${bean.getProduto().keySet()}" >
-	<div class="col-sm-6 col-md-3">
-			<div class="thumbnail">
-				<img src="..." alt="...">
-				<div class="caption">
-				
-				<form action="carrinho" method="Post">
-				<input type="hidden" name="nome"
-					value="${bean.getProduto().get(i).getNome()}"> <input
-					type="hidden" name="descricao"
-					value="${bean.getProduto().get(i).getDescricao()}">
-				<input type="hidden" name="preco"
-					value="${bean.getProduto().get(i).getPreco()}"> <input
-					type="hidden" name="promocao"
-					value="${bean.getProduto().get(i).isPromocao()}">
-				
-				
-					<h3>${bean.getProduto().get(i).getNome()}</h3>
-					<p>Descriçao:${bean.getProduto().get(i).getDescricao()}</p>
-					<p>Preço:${bean.getProduto().get(i).getPreco()}</p>
-					<p>
-					
-					
-				<button type="submit" class="btn btn-primary" role="button">Adicionar ao Carrinho
-				<span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span></button>			
-						
-						</form>				
-					</p>
-				</div>
+		<!-- Wrapper for slides -->
+		<div class="carousel-inner" role="listbox">
+			<div class="item active">
+				<img src="images/Resident-Evil-7-Art.jpg" style="width: 100%;"
+					class="img-responsive">
+				<div class="carousel-caption">...</div>
 			</div>
+			<div class="item">
+				<img src="images/maxresdefault.jpg" style="width: 100%;"
+					class="img-responsive">
+				<div class="carousel-caption">...</div>
+			</div>
+			...
 		</div>
-	
-	</c:forEach>
-	
-		
+
+		<!-- Controls -->
+		<a class="left carousel-control" href="#carousel-example-generic"
+			role="button" data-slide="prev"> <span
+			class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span> <span
+			class="sr-only">Previous</span>
+		</a> <a class="right carousel-control" href="#carousel-example-generic"
+			role="button" data-slide="next"> <span
+			class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+			<span class="sr-only">Next</span>
+		</a>
 	</div>
+
+	<div class="jumbotron">
+		<div class="container">
+		<h3 style="color: #000;">Jogos Mais Comprados</h3>
+		<div class="row">
+
+			<jsp:useBean id="bean"
+				class="br.com.gamestore.persistences.ProdutoManager"></jsp:useBean>
+
+			<c:forEach var="i" items="${bean.getProduto().keySet()}">
+				<div class="col-sm-6 col-md-3">
+					<div class="thumbnail">
+						<img src="..." alt="...">
+						<div class="caption">
+
+							<form action="carrinho" method="Post">
+								<input type="hidden" name="nome"
+									value="${bean.getProduto().get(i).getNome()}"> <input
+									type="hidden" name="descricao"
+									value="${bean.getProduto().get(i).getDescricao()}"> <input
+									type="hidden" name="preco"
+									value="${bean.getProduto().get(i).getPreco()}"> <input
+									type="hidden" name="promocao"
+									value="${bean.getProduto().get(i).isPromocao()}">
+
+
+								<h3>${bean.getProduto().get(i).getNome()}</h3>
+								<p>Descriçao:${bean.getProduto().get(i).getDescricao()}</p>
+								<p>Preço:${bean.getProduto().get(i).getPreco()}</p>
+								<p>
+
+
+									<button type="submit" class="btn btn-warning" role="button">
+										Adicionar ao Carrinho <span
+											class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>
+									</button>
+							</form>
+							</p>
+						</div>
+					</div>
+				</div>
+
+			</c:forEach>
+		</div>
+	</div>
+</div>	
 
 </body>
 </html>

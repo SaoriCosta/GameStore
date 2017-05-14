@@ -35,7 +35,7 @@ public class VendaServlet extends HttpServlet {
 		double preco_total;
 		String s;
 		
-		// Atributo de html <input hidden name="s" value="${usuario.getCpf()}">
+		// Atributo de html <input hidden name="s" value="${usuario.getEmail()}">
 		s = request.getParameter("s");
 		
 		List<Produto> produto;
