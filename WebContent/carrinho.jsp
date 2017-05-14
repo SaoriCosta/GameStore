@@ -26,8 +26,12 @@
 			<th>Descricao</th>
 			<th>Preço</th>
 		
-			
+		<% double total = 0; %>	
 		<c:forEach var="i" begin="0" end="${CarrinhoManager.getCarrinho().get(user.getCpf()).size()-1}">
+		
+			<form >
+				<input type="hidden" name="codigo" value="<%=Math.random()%>">
+					
 				<tr>	
 				<td>${CarrinhoManager.getCarrinho().get(user.getCpf()).get(i).getNome()} </td>
 				<td>${CarrinhoManager.getCarrinho().get(user.getCpf()).get(i).getDescricao()} </td>
@@ -40,8 +44,9 @@
 					<td></td>
 						<td></td>
 						<td></td>
-					<td><button class="btn btn-success"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Finalizar Compra</button></td>
+					<td><button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Finalizar Compra</button></td>
 				</tr>
+			</form>	
 		</table>	
 	</c:if>
 	<c:if test="${CarrinhoManager.getCarrinho().get(user.getCpf())==null || CarrinhoManager.getCarrinho().get(user.getCpf()).size()==0}">

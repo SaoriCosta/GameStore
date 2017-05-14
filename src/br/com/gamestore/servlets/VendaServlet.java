@@ -31,7 +31,7 @@ public class VendaServlet extends HttpServlet {
 	}
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
-		int codigo;
+		int codigo; // codigo aleatorio
 		double preco_total;
 		String s;
 		
