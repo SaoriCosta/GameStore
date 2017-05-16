@@ -7,7 +7,7 @@
 <title>Faça seu login</title>
 </head>
 <body>
-	<form action="../login" method="post">
+	<form action="login" method="post">
 		<input class="form-control" type="email" name="email"
 			placeholder="Email"> <input class="form-control"
 			type="password" name="senha" placeholder="Senha">

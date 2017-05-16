@@ -123,7 +123,10 @@
 										<li><a href="#">Alterar dados</a></li>
 										<li><a href="#">Histórico de Compras</a></li>
 										<li role="separator" class="divider"></li>
-										<li><a href="#">Sair</a></li>
+										<li>
+											<c:url value="/usuarioLogout" var="usuarioLogout"></c:url>
+											<a href="${usuarioLogout}">Logout</a>
+										</li>
 									</ul></li>
 								
 								<li><a style="color: #616161;" class="btn btn-default pull-right"
@@ -189,6 +192,7 @@
 				class="active"></li>
 			<li data-target="#carousel-example-generic" data-slide-to="1"></li>
 			<li data-target="#carousel-example-generic" data-slide-to="2"></li>
+				<li data-target="#carousel-example-generic" data-slide-to="3"></li>
 		</ol>
 
 		<!-- Wrapper for slides -->
@@ -200,6 +204,16 @@
 			</div>
 			<div class="item">
 				<img src="images/maxresdefault.jpg" style="width: 100%;"
+					class="img-responsive">
+				<div class="carousel-caption">...</div>
+			</div>
+			<div class="item">
+				<img src="images/Devil-May-Cry-Special-Edition-PS4.jpg" style="width: 100%;"
+					class="img-responsive">
+				<div class="carousel-caption">...</div>
+			</div>
+			<div class="item">
+				<img src="images/Callofduty.png" style="width: 100%;"
 					class="img-responsive">
 				<div class="carousel-caption">...</div>
 			</div>
@@ -301,22 +315,34 @@
 		</div>
 
 <br><br>
+<hr>
+<h2 class="text-center">Principais Títulos</h2>
 <div class="row">
-	<div class="col-md-4">
+	<div class="col-md-3">
 		<img src="images/Devil-May-Cry-Special-Edition-PS4.jpg" class="img-responsive img-circle">
+		<h3 class="text-center">Devil May Cry 4</h3>
+		<h5 class="text-center"><a  class="btn btn-danger" href="https://www.youtube.com/watch?v=Uz58uS7FZ28" target="_blank" ><span class="glyphicon glyphicon-play-circle" aria-hidden="true"></span> Ver trailer</a></h5>
 	</div>
-	<div class="col-md-4">
-		<img src="images/jUHN3Th.jpg" class="img-responsive img-circle">
+	<div class="col-md-3">
+		<img src="images/Resident-Evil-7-Art.jpg" class="img-responsive img-circle">
+		<h3 class="text-center">Resident Evil 7</h3>
+		<h5 class="text-center"><a  class="btn btn-danger" href="https://www.youtube.com/watch?v=viyqPAziAaw" target="_blank"><span class="glyphicon glyphicon-play-circle" aria-hidden="true"></span> Ver trailer</a></h5>
 	</div>
 	
-	<div class="col-md-4">
-		<img src="images/Callofduty.png" class="img-responsive img-circle">
+	<div class="col-md-3">
+		<img src="images/3080752-9k=.jpg" class="img-responsive img-circle">
+		<h3 class="text-center">God of War PS4</h3>
+		<h5 class="text-center"><a  class="btn btn-danger" href="https://www.youtube.com/watch?v=CJ_GCPaKywg" target="_blank"><span class="glyphicon glyphicon-play-circle" aria-hidden="true"></span> Ver trailer</a></h5>
 	</div>
+	
+	<div class="col-md-3">
+		<img src="images/maxresdefault.jpg" class="img-responsive img-circle">
+		<h3 class="text-center">Horizon - Zero Dawn</h3>
+		<h5 class="text-center"><a  class="btn btn-danger" href="https://www.youtube.com/watch?v=RRQDqurZJNk"><span class="glyphicon glyphicon-play-circle" aria-hidden="true"></span> Ver trailer</a></h5>
+	</div>
+	
 </div>
 
-
-<c:url value="/usuarioLogout" var="usuarioLogout"></c:url>
-<a href="${usuarioLogout}">Logout</a>
 
 </body>
 </html>
