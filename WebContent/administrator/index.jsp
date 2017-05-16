@@ -67,7 +67,8 @@
 		</c:forEach>
 	</table>
 
-
+<c:url value="/adminLogout" var="adminLogout"></c:url>
+<a href="${adminLogout}">Logout</a>
 
 </body>
 </html>

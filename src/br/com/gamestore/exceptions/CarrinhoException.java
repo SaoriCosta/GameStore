@@ -8,6 +8,6 @@ public class CarrinhoException extends ServletException {
 	private static final long serialVersionUID = 1L;
 	
 	public CarrinhoException(){
-		super("Carrinho Vazio !");
+		super("Carrinho Vazio!");
 	}
 }
