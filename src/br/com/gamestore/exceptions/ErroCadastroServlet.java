@@ -7,8 +7,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.catalina.servlets.WebdavServlet;
+
 @WebServlet("/ErroCadastroServlet")
-public class ErroCadastroServlet extends HttpServlet {
+public class ErroCadastroServlet extends WebdavServlet {
 	private static final long serialVersionUID = 1L;
   
 

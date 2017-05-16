@@ -7,9 +7,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.catalina.filters.WebdavFixFilter;
+import org.apache.catalina.servlets.WebdavServlet;
+
 
 @WebServlet("/inexistentesServlet")
-public class InexistentesServlet extends HttpServlet {
+public class InexistentesServlet extends WebdavServlet {
 	private static final long serialVersionUID = 1L;
        
    
