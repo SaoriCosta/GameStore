@@ -12,7 +12,7 @@ import org.apache.catalina.servlets.WebdavServlet;
 /**
  * Servlet implementation class ErroCarrinhoException
  */
-@WebServlet("/ErroCarrinhoException")
+@WebServlet("/erroCarrinho")
 public class ErroCarrinhoException extends WebdavServlet {
 	private static final long serialVersionUID = 1L;
        

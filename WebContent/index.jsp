@@ -1,14 +1,15 @@
+<%@page import="br.com.gamestore.persistences.CategoriaManager"%>
 <%@page import="br.com.gamestore.entidades.Administrador"%>
 <%@page import="br.com.gamestore.entidades.Produto"%>
 <%@page import="br.com.gamestore.persistences.ProdutoManager"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+<%@ taglib uri='http://java.sun.com/jsp/jstl/core' prefix='c'%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<%@ taglib uri='http://java.sun.com/jsp/jstl/core' prefix='c'%>
 <link rel="stylesheet" href="css/bootstrap-3.3.7-dist/css/bootstrap.css">
 <link rel="stylesheet"
 	href="css/bootstrap-3.3.7-dist/css/bootstrap-theme.css">
@@ -75,27 +76,26 @@
 						<li class="active"><a style="color: #fff;" href="#">Home<span
 								class="sr-only">(current)</span></a></li>
 						<li><a style="color: #000;" href="#">Sobre</a></li>
-						<li><a style="color: #000;" href="#">Produtos</a></li>
+						<li><a style="color: #000;" href="produtos.jsp">Produtos</a></li>
+						
 						<li class="dropdown"><a id="p" style="color: #000;"
 							onclick="$('#p').css('color','#fff');" class="dropdown-toggle"
 							data-toggle="dropdown" role="button" aria-haspopup="true"
 							aria-expanded="false">Categorias <span class="caret"></span></a>
 							<ul class="dropdown-menu"
 								onmouseover="$('#p').css('color','#fff');">
-								<li><a href="#">Ação</a></li>
-								<li><a href="#">Aventura</a></li>
-								<li><a href="#">Terror</a></li>
-								<li><a href="#">Suspense</a></li>
-								<li><a href="#">Drama</a></li>
+								<c:forEach var="i" items="${CategoriaManager.getCategoria().keySet()}">
+									<li><a href="">${CategoriaManager.getCategoria().get(i).getNome()}</a></li>
+								</c:forEach>
 								<li role="separator" class="divider"></li>
 								<li><a href="#">Separated link</a></li>
 								<li role="separator" class="divider"></li>
 								<li><a href="#">One more separated link</a></li>
 							</ul></li>
 					</ul>
-					<form class="navbar-form navbar-left">
+					<form class="navbar-form navbar-left" action="search" method="get">
 						<div class="form-group">
-							<input type="text" class="form-control" placeholder="Pesquisa..">
+							<input type="text" name="search" class="form-control" placeholder="Pesquisa..">
 						</div>
 						<button type="submit" class="btn btn-default ">
 							<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
@@ -262,6 +262,7 @@
 								<h3>${bean.getProduto().get(i).getNome()}</h3>
 								<p>Descriçao:${bean.getProduto().get(i).getDescricao()}</p>
 								<p>Preço:${bean.getProduto().get(i).getPreco()}</p>
+								<p>Categoria:${bean.getProduto().get(i).getCategoria().getNome()}</p>
 								<p>
 
 
@@ -342,7 +343,6 @@
 	</div>
 	
 </div>
-
 
 </body>
 </html>
