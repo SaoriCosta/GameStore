@@ -34,7 +34,7 @@
 <body style="background: url('images/dark.jpg');">
 	<div style="background: #000;">
 		<c:if test="${user != null }">
-			<label style="color: #fff;">Bem vindo : ${user.getNome()}</label>
+			<label style="color: #fff;">Bem vindo , ${user.getNome()}</label>
 			<a style="color: #616161;" class="btn btn-default pull-right"
 				href="carrinho.jsp">Carrinho : <span class="badge">${qtd}</span>
 				<span class="glyphicon glyphicon-shopping-cart white"
@@ -314,6 +314,9 @@
 	</div>
 </div>
 
+
+<c:url value="/usuarioLogout" var="usuarioLogout"></c:url>
+<a href="${usuarioLogout}">Logout</a>
 
 </body>
 </html>
