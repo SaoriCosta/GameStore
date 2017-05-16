@@ -50,11 +50,11 @@ public class LoginServlet extends HttpServlet {
 					request.getRequestDispatcher("/administrator").forward(request, response);
 				}else{
 					request.setAttribute("erro", "Senha Inv�lida");
-					request.getRequestDispatcher("/login.jsp").forward(request, response);
+					request.getRequestDispatcher("../login.jsp").forward(request, response);
 				}
 			}else{
 				request.setAttribute("erro", "Usu�rio Inexistente");
-				request.getRequestDispatcher("/login.jsp").forward(request, response);
+				request.getRequestDispatcher("../login.jsp").forward(request, response);
 			}
 		
 		}else{

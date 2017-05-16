@@ -29,31 +29,32 @@
 </script>
 
 
-<title>Inicio</title>
+<title>Bem vindo : ${user.getNome()}</title>
 </head>
-<body style="background: #000;">
-
-	<c:if test="${user != null }">
-		<label style="color: #fff;">Bem vindo : ${user.getNome()}</label>
-		<a style="color: #616161;" class="btn btn-default pull-right"
-			href="carrinho.jsp">Carrinho : <span class="badge">${qtd}</span>
-			<span class="glyphicon glyphicon-shopping-cart white"
-			aria-hidden="true"></span>
-		</a>
-	</c:if>
-	<c:if test="${user == null }">
-		<button style="background: #fff; color: #000;" type="button"
-			class="btn btn-primary pull-right" data-toggle="modal"
-			data-target=".bs-example-modal-sm">
-			<span class="glyphicon glyphicon-log-in" aria-hidden="true"></span>
-			Login / Cadastre-se
-		</button>
-	</c:if>
-
+<body style="background: url('images/dark.jpg');">
+	<div style="background: #000;">
+		<c:if test="${user != null }">
+			<label style="color: #fff;">Bem vindo : ${user.getNome()}</label>
+			<a style="color: #616161;" class="btn btn-default pull-right"
+				href="carrinho.jsp">Carrinho : <span class="badge">${qtd}</span>
+				<span class="glyphicon glyphicon-shopping-cart white"
+				aria-hidden="true"></span>
+			</a>
+		</c:if>
+		<c:if test="${user == null }">
+			<button style="background: #fff; color: #000;" type="button"
+				class="btn btn-primary pull-right" data-toggle="modal"
+				data-target=".bs-example-modal-sm">
+				<span class="glyphicon glyphicon-log-in" aria-hidden="true"></span>
+				Login / Cadastre-se
+			</button>
+		</c:if>
+	</div>
 	<div class="row">
 		<div class="col-md-12">
-			<nav class="navbar navbar-inverse"
-				style="background:#fff;color:#fff;">
+			<nav class="navbar navbar-inverse navbar-fixed-top"
+				style="background:#fff;color:#fff;"
+				onmouseout="$('#p').css('color','#000');">
 			<div class="container-fluid">
 				<!-- Brand and toggle get grouped for better mobile display -->
 				<div class="navbar-header">
@@ -75,18 +76,17 @@
 								class="sr-only">(current)</span></a></li>
 						<li><a style="color: #000;" href="#">Sobre</a></li>
 						<li><a style="color: #000;" href="#">Produtos</a></li>
-						<li class="dropdown"><a style="color: #000;" href="#"
-							class="dropdown-toggle" data-toggle="dropdown" role="button"
-							aria-haspopup="true" aria-expanded="false">Categorias <span
-								class="caret"></span></a>
-							<ul class="dropdown-menu">
+						<li class="dropdown"><a id="p" style="color: #000;"
+							onclick="$('#p').css('color','#fff');" class="dropdown-toggle"
+							data-toggle="dropdown" role="button" aria-haspopup="true"
+							aria-expanded="false">Categorias <span class="caret"></span></a>
+							<ul class="dropdown-menu"
+								onmouseover="$('#p').css('color','#fff');">
 								<li><a href="#">Ação</a></li>
 								<li><a href="#">Aventura</a></li>
 								<li><a href="#">Terror</a></li>
-								<li><a href="#">Suspense</a></li> <<<<<<< HEAD
-								<li><a href="#">Drama</a></li> =======
-								<li><a href="#">Drama</a></li> >>>>>>>
-								fc11b3b134e29d96cb5f72b5a0bd1d3a670ed984
+								<li><a href="#">Suspense</a></li>
+								<li><a href="#">Drama</a></li>
 								<li role="separator" class="divider"></li>
 								<li><a href="#">Separated link</a></li>
 								<li role="separator" class="divider"></li>
@@ -101,19 +101,39 @@
 							<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
 						</button>
 					</form>
+
 					<ul class="nav navbar-nav navbar-right">
 						<li role="presentation"><a href="#">Promoções</a></li>
-						<li role="presentation"><a href="#">Contato</a></li>
-						<li class="dropdown"><a href="#" class="dropdown-toggle"
-							data-toggle="dropdown" role="button" aria-haspopup="true"
-							aria-expanded="false">Dropdown <span class="caret"></span></a>
-							<ul class="dropdown-menu">
-								<li><a href="#">Action</a></li>
-								<li><a href="#">Another action</a></li>
-								<li><a href="#">Something else here</a></li>
-								<li role="separator" class="divider"></li>
-								<li><a href="#">Separated link</a></li>
-							</ul></li>
+						<li role="presentation"><a href="#contato_div">Contato</a></li>
+
+						<li><c:if test="${user == null }">
+								<li><a style="background: #fff; color: #000;"
+										type="button" class="btn btn-primary pull-right"
+										data-toggle="modal" data-target=".bs-example-modal-sm">
+										<span class="glyphicon glyphicon-log-in" aria-hidden="true"></span>
+										Login / Cadastre-se
+									</a></li>
+							</c:if> <c:if test="${user != null }">
+
+
+								<li class="dropdown"><a href="#" class="dropdown-toggle"
+									data-toggle="dropdown" role="button" aria-haspopup="true"
+									aria-expanded="false"> Configurações<span class="caret"></span></a>
+									<ul class="dropdown-menu">
+										<li><a href="#">Alterar dados</a></li>
+										<li><a href="#">Histórico de Compras</a></li>
+										<li role="separator" class="divider"></li>
+										<li><a href="#">Sair</a></li>
+									</ul></li>
+								
+								<li><a style="color: #616161;" class="btn btn-default pull-right"
+									href="carrinho.jsp">Carrinho : <span class="badge">${qtd}</span>
+									<span class="glyphicon glyphicon-shopping-cart"
+									aria-hidden="true"></span>
+								</a>
+
+							</c:if></li>
+
 					</ul>
 				</div>
 				<!-- /.navbar-collapse -->
@@ -124,7 +144,7 @@
 	</div>
 
 
-	<!-- Small modal -->
+	<!-- ################################### Small modal -LOGIN @################################################3 -->
 
 
 	<div id="myModel" class="modal fade bs-example-modal-sm" tabindex="-1"
@@ -134,17 +154,26 @@
 				<div class="row">
 					<div class="col-md-1"></div>
 					<div class="col-md-10">
-						<div>
-							<label><h2 class="text-center">Login</h2></label>
-							<form action="login" method="post">
-								<input class="form-control" type="email" name="email"
-									placeholder="Email"> <input class="form-control"
-									type="password" name="senha" placeholder="Senha">
-								<button type="submit" class="btn btn-default">Login</button>
-								<a href="cadastro.jsp">Cadastre-se</a>
-							</form>
 
-						</div>
+						<form action="login" method="post">
+							<label><h2 class="text-center">Login</h2></label>
+							<div class="input-group">
+								<span class="input-group-addon"><i
+									class="glyphicon glyphicon-user"></i></span> <input id="email"
+									type="text" class="form-control" name="email"
+									placeholder="Email">
+							</div>
+							<div class="input-group">
+								<span class="input-group-addon"><i
+									class="glyphicon glyphicon-lock"></i></span> <input id="password"
+									type="password" class="form-control" name="senha"
+									placeholder="Password">
+							</div>
+
+							<button type="submit" class="btn btn-default">Login</button>
+							<a href="cadastro.jsp">Cadastre-se</a>
+
+						</form>
 					</div>
 					<div class="col-md-1"></div>
 				</div>
@@ -190,8 +219,8 @@
 	</div>
 
 	<div class="jumbotron">
-		<div class="container">
-		<h3 style="color: #000;">Jogos Mais Comprados</h3>
+
+		<h3 style="color: #000;">Jogos Adicionados recentemente</h3>
 		<div class="row">
 
 			<jsp:useBean id="bean"
@@ -204,9 +233,9 @@
 						<div class="caption">
 
 							<form action="carrinho" method="Post">
-							<input type="hidden" name="codigo"
-									value="${bean.getProduto().get(i).getCodigo()}">
-								<input type="hidden" name="nome"
+								<input type="hidden" name="codigo"
+									value="${bean.getProduto().get(i).getCodigo()}"> <input
+									type="hidden" name="nome"
 									value="${bean.getProduto().get(i).getNome()}"> <input
 									type="hidden" name="descricao"
 									value="${bean.getProduto().get(i).getDescricao()}"> <input
@@ -233,9 +262,58 @@
 				</div>
 
 			</c:forEach>
+
 		</div>
 	</div>
-</div>	
+
+
+
+	<div id="contato_div"
+		style="background: #fff; width: 100%; padding: 4%;" class="form-group">
+
+
+		<div class="container">
+			<h2>Contato</h2>
+			<div id="contact" class="circle">
+				<div class="input-group">
+					<span class="input-group-addon" id="basic-addon1">@</span> <input
+						type="text" class="form-control" placeholder="Username"
+						aria-describedby="basic-addon1">
+				</div>
+				<br>
+
+				<div class="input-group">
+					<input type="text" class="form-control"
+						placeholder="Recipient's username" aria-describedby="basic-addon2">
+					<span class="input-group-addon" id="basic-addon2">@example.com</span>
+				</div>
+				<br>
+
+
+				<textarea class="form-control" rows="5" id="comment"
+					placeholder="Digite sua pergunta aqui.."></textarea>
+
+				<a href="#" class="btn btn-success btn-block "> Entrar em
+					Contato! </a>
+			</div>
+
+
+		</div>
+
+<br><br>
+<div class="row">
+	<div class="col-md-4">
+		<img src="images/Devil-May-Cry-Special-Edition-PS4.jpg" class="img-responsive img-circle">
+	</div>
+	<div class="col-md-4">
+		<img src="images/jUHN3Th.jpg" class="img-responsive img-circle">
+	</div>
+	
+	<div class="col-md-4">
+		<img src="images/Callofduty.png" class="img-responsive img-circle">
+	</div>
+</div>
+
 
 </body>
 </html>
