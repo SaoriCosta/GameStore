@@ -5,6 +5,7 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
@@ -41,7 +42,7 @@ import org.apache.commons.fileupload.servlet.ServletFileUpload;
 @WebServlet("/produto")
 public class ProdutoServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
+      private static HttpServletRequest req; 
     public ProdutoServlet() {
         super();
         
@@ -55,48 +56,44 @@ public class ProdutoServlet extends HttpServlet {
 
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+		String filePath = null;
+		req = request;
+		
 		String nome, descricao,codigo;
 		String preco;
 		boolean promocao;
+		String id;
+		List<String> list =  new ArrayList();
+	
+		
+		
+	
 		
 		Produto produto = new Produto();
-		nome = request.getParameter("nome");
-		descricao = request.getParameter("descricao");
-		preco = request.getParameter("preco");
-		promocao = Boolean.parseBoolean(request.getParameter("promocao")) ;
-		codigo = request.getParameter("codigo");
-		String id = request.getParameter("id");
+		nome = list.get(0);
+		descricao = list.get(1);
+		preco = list.get(2);
+		promocao = Boolean.parseBoolean(list.get(3));
+		codigo = list.get(4);
+		id = list.get(5);
 		
+	/*	nome = req.getParameter("nome");
+		descricao = req.getParameter("descricao");
+		preco = req.getParameter("preco");
+		promocao = Boolean.parseBoolean(req.getParameter("promocao")) ;
+		codigo = req.getParameter("codigo");
+		String id = req.getParameter("id");
+		*/
+		
+		if(nome == null) System.out.println("nome nulo");
+		if(descricao == null) System.out.println("desc nulo");
+		if(preco == null) System.out.println("prec nulo");
+		if(codigo == null) System.out.println("codigo nulo");
 		
 		if(nome == null || descricao == null || preco == null  || codigo == null){
 			throw new CadastroException();
 		}
 		
-		
-		  if (ServletFileUpload.isMultipartContent(request)) {
-	            try {
-	                List<FileItem> multiparts = new ServletFileUpload(
-	                    new DiskFileItemFactory()).parseRequest(request);
-	                Iterator iter = multiparts.iterator();
-	                System.out.println(multiparts.size()); // this is giving me zero
-	                while (iter.hasNext()) {
-	                    FileItem item = (FileItem) iter.next();
-	   
-	                    	String fileName = item.getName();
-	                    File file = new File("/GameStore/images" + File.separator + fileName);
-	                    item.write(file);
-	                    
-	                }
-	                //File uploaded successfully
-	            } catch (Exception ex) {
-	                request.setAttribute("message", "File Upload Failed due to " + ex);
-	            }
-	        } else {
-	            // error occured
-	        }
-        
-
 		Categoria cat = new Categoria();
 		cat.setId(Integer.parseInt(id));
 		cat.setNome(CategoriaManager.getCategoria().get(Integer.parseInt(id)).getNome());
@@ -109,7 +106,7 @@ public class ProdutoServlet extends HttpServlet {
 		produto.setPromocao(promocao);
 		produto.setCodigo(codigo);
         
-        produto.setImage(request.getServletContext().getRealPath("images")+ File.separator + request.getParameter("file"));
+        produto.setImage(filePath);
         
     	ProdutoManager.addProduto(produto);
 		
