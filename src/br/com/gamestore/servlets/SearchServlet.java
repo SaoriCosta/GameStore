@@ -36,7 +36,8 @@ public class SearchServlet extends HttpServlet {
 			String nome = ProdutoManager.getProduto().get(key).getNome().toLowerCase();
 			String desc = ProdutoManager.getProduto().get(key).getDescricao().toLowerCase();
 			String cat_nome = ProdutoManager.getProduto().get(key).getCategoria().getNome().toLowerCase();
-
+				if(cat_nome.equals("ação"))cat_nome = "acao";
+				
 			query = query.toLowerCase();
 			
 			if(nome.contains(query) || desc.contains(query) || cat_nome.contains(query)){

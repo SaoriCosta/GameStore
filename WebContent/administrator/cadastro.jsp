@@ -10,11 +10,12 @@
 </head>
 <body>
 	<div>
-		<form action="../produto" method="get" >
+		<form action="../produto" method="post" enctype="multipart/form-data">
 			<input type="text" name="codigo" placeholder="Código"><br>
 			<input type="text" name="nome" placeholder="Nome"><br>
 			<input type="text" name="descricao" placeholder="Descrição"><br>
 			<input type="text" name="preco" placeholder="Preço"><br>
+			<input type="file" name="file">
 			<c:forEach var="i" items="${CategoriaManager.getCategoria().keySet()}">
 				<label>${CategoriaManager.getCategoria().get(i).getNome()}</label>
 				<input type="checkbox" name="id" value="${CategoriaManager.getCategoria().get(i).getId()}" />

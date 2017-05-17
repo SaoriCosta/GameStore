@@ -11,7 +11,10 @@
 <body>
 
 <table>
+<c:if test="${resultList.size()==0}">Busca não retornou resultados!</c:if>
+<c:if test="${resultList.size()!=0}">
 <c:forEach var="i" begin="0" end="${resultList.size()-1}">
+
 	<tr>
 		<td>${resultList.get(i).getCodigo()}</td>
 		<td>${resultList.get(i).getNome()}</td>
@@ -21,6 +24,7 @@
 		<td><button type="submit" >Adicionar ao Carrinho</button></td>
 	</tr>
 </c:forEach>
+</c:if>
 </table>
 </body>
 </html>

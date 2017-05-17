@@ -52,7 +52,7 @@ public class TesteListener implements ServletContextListener {
     	p1.setDescricao("Oh loko");
     	p1.setPreco(123);
     	p1.setCategoria(cat);
-    	
+    	p1.setImage("images/Resident-Evil-7-Art.jpg");
     	
     	ProdutoManager.addProduto(p1);
     	

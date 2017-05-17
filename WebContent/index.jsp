@@ -243,7 +243,7 @@
 			<c:forEach var="i" items="${bean.getProduto().keySet()}">
 				<div class="col-sm-6 col-md-3">
 					<div class="thumbnail">
-						<img src="..." alt="...">
+						<img src="${bean.getProduto().get(i).getImage()}" alt="...">
 						<div class="caption">
 
 							<form action="carrinho" method="Post">
