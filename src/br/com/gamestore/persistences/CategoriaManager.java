@@ -1,19 +1,20 @@
 package br.com.gamestore.persistences;
 
+import java.util.HashMap;
 import java.util.TreeMap;
 
 import br.com.gamestore.entidades.Categoria;
 
 public class CategoriaManager {
 	
-	private static TreeMap<Integer, Categoria>  categoria =  new TreeMap<Integer, Categoria>();
-	private static int idCount = 0;
+	private static HashMap<Integer, Categoria>  categoria =  new HashMap<Integer, Categoria>(4);
+	private static int idCount = categoria.size();
 
-	public static TreeMap<Integer, Categoria> getCategoria() {
+	public static HashMap<Integer, Categoria> getCategoria() {
 		return categoria;
 	}
 
-	public static void setCategoria(TreeMap<Integer, Categoria> categoria) {
+	public static void setCategoria(HashMap<Integer, Categoria> categoria) {
 		CategoriaManager.categoria = categoria;
 	}
 

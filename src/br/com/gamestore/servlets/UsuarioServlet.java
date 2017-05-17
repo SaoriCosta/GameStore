@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import br.com.gamestore.entidades.Usuario;
+import br.com.gamestore.exceptions.CadastroException;
 import br.com.gamestore.persistences.UsuarioManager;
 import sun.rmi.server.Dispatcher;
 
@@ -37,17 +38,23 @@ public class UsuarioServlet extends HttpServlet {
 		cpf = request.getParameter("cpf");
 		
 		
-		Usuario user = new Usuario();
-		
-		user.setCpf(cpf);
-		user.setEmail(email);
-		user.setSenha(senha);
-		user.setNome(nome);
-		
-		
-		UsuarioManager.addUsuario(user);
-		
-		request.getRequestDispatcher("/index.jsp").forward(request, response);
+		if(nome == null || email == null || senha == null || cpf == null){
+			
+			throw new CadastroException();
+		}else{
+			Usuario user = new Usuario();
+			
+			user.setCpf(cpf);
+			user.setEmail(email);
+			user.setSenha(senha);
+			user.setNome(nome);
+			
+			
+			UsuarioManager.addUsuario(user);
+			request.getRequestDispatcher("/index.jsp").forward(request, response);
+		}
+	
+	
 		
 		//doGet(request, response);
 	}

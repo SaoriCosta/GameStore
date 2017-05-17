@@ -5,8 +5,10 @@ import javax.servlet.ServletContextListener;
 import javax.servlet.annotation.WebListener;
 
 import br.com.gamestore.entidades.Administrador;
+import br.com.gamestore.entidades.Categoria;
 import br.com.gamestore.entidades.Produto;
 import br.com.gamestore.persistences.AdminManager;
+import br.com.gamestore.persistences.CategoriaManager;
 import br.com.gamestore.persistences.ProdutoManager;
 import javafx.scene.image.ImageView;
 
@@ -27,13 +29,30 @@ public class TesteListener implements ServletContextListener {
     	AdminManager.addAdmin(padrao);
     	
     	
+    	Categoria cat = new Categoria();
+    	cat.setNome("Ação");
+    	cat.setId(1);
+    	
+    	CategoriaManager.addCategoria(cat);
+    	
+    	Categoria cat1 = new Categoria();
+    	cat1.setNome("Aventura");
+    	cat1.setId(2);
+    	CategoriaManager.addCategoria(cat1);
+    	
+    	Categoria cat2 = new Categoria();
+    	cat2.setId(3);
+    	cat2.setNome("Drama");
+    	
+    	CategoriaManager.addCategoria(cat2);
+    	
     	Produto p1 = new Produto();
     	p1.setNome("Grand Theft Auto V");
     	p1.setCodigo("001");
     	p1.setDescricao("Oh loko");
     	p1.setPreco(123);
-       
-    	
+    	p1.setCategoria(cat);
+    	p1.setImage("images/Resident-Evil-7-Art.jpg");
     	
     	ProdutoManager.addProduto(p1);
     	
@@ -42,7 +61,9 @@ public class TesteListener implements ServletContextListener {
     	p2.setCodigo("002");
     	p2.setDescricao("Oh loko");
     	p2.setPreco(123);
-        
+        p2.setCategoria(cat1);
+    	
+    	
     	ProdutoManager.addProduto(p2);
     	
     	Produto p3 = new Produto();
@@ -50,16 +71,26 @@ public class TesteListener implements ServletContextListener {
     	p3.setCodigo("003");
     	p3.setDescricao("Oh loko");
     	p3.setPreco(123);
-        
+        p3.setCategoria(cat1);
+    	
     	ProdutoManager.addProduto(p3);
     	
+    	
+    	
+    	
     	Produto p4 = new Produto();
-    	p4.setNome("Horizon Zero Dawn");
+    	p4.setNome("Silent hill");
     	p4.setCodigo("004");
     	p4.setDescricao("Oh loko");
     	p4.setPreco(123);
-        
+        p4.setCategoria(cat2);
+    	
     	ProdutoManager.addProduto(p4);
+    	
+    
+    	
+    	
+    	
     }
     
     

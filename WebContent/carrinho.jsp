@@ -46,7 +46,8 @@
 		</table>	
 	</c:if>
 	<c:if test="${CarrinhoManager.getCarrinho().get(user.getCpf())==null || CarrinhoManager.getCarrinho().get(user.getCpf()).size()==0}">
-		<h3>O carrinho está vazio</h3>
+		<c:catch>O carrinho está vazio!</c:catch>
+	
 	</c:if>	
 </body>
 </html>

@@ -18,13 +18,13 @@ public class Produto {
 	private Categoria categoria;
 	private double preco;
 	private boolean promocao;
-	private ImageView image;
+	private String image;
 	
 	
-	public ImageView getImage() {
+	public String getImage() {
 		return image;
 	}
-	public void setImage(ImageView imageView) {
+	public void setImage(String imageView) {
 		this.image = imageView;
 	}
 	public String getNome() {
