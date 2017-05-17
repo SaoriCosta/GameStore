@@ -5,6 +5,7 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.util.Iterator;
 import java.util.List;
 
 import javax.imageio.ImageIO;
@@ -33,6 +34,10 @@ import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
 
 
+
+@javax.servlet.annotation.MultipartConfig
+
+
 @WebServlet("/produto")
 public class ProdutoServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -52,61 +57,59 @@ public class ProdutoServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		String nome, descricao,codigo;
-		double preco;
+		String preco;
 		boolean promocao;
 		
 		Produto produto = new Produto();
 		nome = request.getParameter("nome");
 		descricao = request.getParameter("descricao");
-		preco = Double.parseDouble(request.getParameter("preco"));
+		preco = request.getParameter("preco");
 		promocao = Boolean.parseBoolean(request.getParameter("promocao")) ;
 		codigo = request.getParameter("codigo");
-		int id = Integer.parseInt(request.getParameter("id"));
+		String id = request.getParameter("id");
 		
 		
-		if(nome == null || descricao == null || preco == 0.0  || codigo == null){
+		if(nome == null || descricao == null || preco == null  || codigo == null){
 			throw new CadastroException();
 		}
 		
+		
+		  if (ServletFileUpload.isMultipartContent(request)) {
+	            try {
+	                List<FileItem> multiparts = new ServletFileUpload(
+	                    new DiskFileItemFactory()).parseRequest(request);
+	                Iterator iter = multiparts.iterator();
+	                System.out.println(multiparts.size()); // this is giving me zero
+	                while (iter.hasNext()) {
+	                    FileItem item = (FileItem) iter.next();
+	   
+	                    	String fileName = item.getName();
+	                    File file = new File("/GameStore/images" + File.separator + fileName);
+	                    item.write(file);
+	                    
+	                }
+	                //File uploaded successfully
+	            } catch (Exception ex) {
+	                request.setAttribute("message", "File Upload Failed due to " + ex);
+	            }
+	        } else {
+	            // error occured
+	        }
+        
+
 		Categoria cat = new Categoria();
-		cat.setId(id);
-		cat.setNome(CategoriaManager.getCategoria().get(id).getNome());
+		cat.setId(Integer.parseInt(id));
+		cat.setNome(CategoriaManager.getCategoria().get(Integer.parseInt(id)).getNome());
 		
 		produto.setNome(nome);
 		produto.setDescricao(descricao);
 		produto.setCategoria(cat);
 		
-		produto.setPreco(preco);
+		produto.setPreco(Double.parseDouble(preco));
 		produto.setPromocao(promocao);
 		produto.setCodigo(codigo);
-		
-		
-		/*Identifica se o formulario é do tipo multipart/form-data*/
-        if (ServletFileUpload.isMultipartContent(request)) {
-        	
-            try {
-            	  JOptionPane.showMessageDialog(null, "vigah");
-                /*Faz o parse do request*/
-                List<FileItem> multiparts = new ServletFileUpload(new DiskFileItemFactory()).parseRequest(request);
- 
-                /*Escreve a o arquivo na pasta img*/
-                for (FileItem item : multiparts) {
-                    if (!item.isFormField()) {
-                        item.write(new File(request.getServletContext().getRealPath("images")+ File.separator + request.getParameter("file")));
-                    }
-                }
-           	
-                request.setAttribute("message", "Arquivo carregado com sucesso");
-            } catch (Exception ex) {
-                request.setAttribute("message", "Upload de arquivo falhou devido a "+ ex);
-            }
- 
-        } else {
-            request.setAttribute("message","Desculpe este Servlet lida apenas com pedido de upload de arquivos");
-            JOptionPane.showMessageDialog(null,"eitaa");
-        }
         
-        produto.setImage("images/"+ request.getParameter("file"));
+        produto.setImage(request.getServletContext().getRealPath("images")+ File.separator + request.getParameter("file"));
         
     	ProdutoManager.addProduto(produto);
 		
