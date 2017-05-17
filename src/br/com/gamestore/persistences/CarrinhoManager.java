@@ -24,7 +24,7 @@ public class CarrinhoManager {
 			List<Produto> list = carrinho.get(user.getCpf());
 			list.add(product);
 		}else{
-			List<Produto> pd = new ArrayList();
+			List<Produto> pd = new ArrayList<Produto>();
 			pd.add(product);
 			carrinho.put(user.getCpf(), pd);
 		}
