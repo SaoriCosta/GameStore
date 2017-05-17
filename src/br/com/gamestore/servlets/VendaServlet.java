@@ -3,6 +3,7 @@ package br.com.gamestore.servlets;
 
 import java.io.IOException;
 import java.sql.Date;
+import java.time.LocalDate;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -31,7 +32,7 @@ public class VendaServlet extends HttpServlet {
 	}
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
-		int codigo;
+		double codigo; // codigo aleatorio
 		double preco_total;
 		String s;
 		
@@ -41,15 +42,16 @@ public class VendaServlet extends HttpServlet {
 		List<Produto> produto;
 		produto = CarrinhoManager.getCarrinho().get(s);
 		
-		Date data = Date.valueOf(request.getParameter("data"));
-		codigo = Integer.parseInt(request.getParameter("codigo"));
+		Date data = Date.valueOf(LocalDate.now());
+		System.out.println(data);
+		codigo = Math.random();
 		preco_total = Double.parseDouble(request.getParameter("preco_total"));
 		
 		Venda venda = new Venda();
 		venda.setData(data);
 		venda.setPreco_total(preco_total);
 		venda.setProdutos(produto);
-		
+		venda.setCodigo(codigo);
 		VendaManager.addVenda(venda);
 		
 		request.getRequestDispatcher("/final-compra.jsp").forward(request, response);

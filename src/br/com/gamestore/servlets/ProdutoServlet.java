@@ -62,37 +62,17 @@ public class ProdutoServlet extends HttpServlet {
 		String nome, descricao,codigo;
 		String preco;
 		boolean promocao;
-		String id;
-		List<String> list =  new ArrayList();
 	
-		
-		
-	
-		
 		Produto produto = new Produto();
-		nome = list.get(0);
-		descricao = list.get(1);
-		preco = list.get(2);
-		promocao = Boolean.parseBoolean(list.get(3));
-		codigo = list.get(4);
-		id = list.get(5);
 		
-	/*	nome = req.getParameter("nome");
+		nome = req.getParameter("nome");
 		descricao = req.getParameter("descricao");
 		preco = req.getParameter("preco");
 		promocao = Boolean.parseBoolean(req.getParameter("promocao")) ;
 		codigo = req.getParameter("codigo");
 		String id = req.getParameter("id");
-		*/
 		
-		if(nome == null) System.out.println("nome nulo");
-		if(descricao == null) System.out.println("desc nulo");
-		if(preco == null) System.out.println("prec nulo");
-		if(codigo == null) System.out.println("codigo nulo");
-		
-		if(nome == null || descricao == null || preco == null  || codigo == null){
-			throw new CadastroException();
-		}
+	
 		
 		Categoria cat = new Categoria();
 		cat.setId(Integer.parseInt(id));
@@ -111,11 +91,7 @@ public class ProdutoServlet extends HttpServlet {
     	ProdutoManager.addProduto(produto);
 		
 		request.getRequestDispatcher("/index.jsp").forward(request, response);
-	
-	
-		
-		
-		//		doGet(request, response);
+
 	}
 
 }

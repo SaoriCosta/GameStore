@@ -7,7 +7,7 @@ public class Venda {
 	
 	private Date data;
 	private List<Produto> produtos;
-	private int codigo;
+	private double codigo;
 	private double preco_total;
 	
 	public Date getData() {
@@ -23,10 +23,10 @@ public class Venda {
 	public void setProdutos(List<Produto> produtos) {
 		this.produtos = produtos;
 	}
-	public int getCodigo() {
+	public double getCodigo() {
 		return codigo;
 	}
-	public void setCodigo(int codigo) {
+	public void setCodigo(double codigo) {
 		this.codigo = codigo;
 	}
 	public double getPreco_total() {
