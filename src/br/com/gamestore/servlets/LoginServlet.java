@@ -53,7 +53,7 @@ public class LoginServlet extends HttpServlet {
 					request.getRequestDispatcher("/login.jsp").forward(request, response);
 				}
 			}else{
-				request.setAttribute("erro", "Usu�rio Inexistente");
+				request.setAttribute("erro", "Usuario Inexistente");
 				request.getRequestDispatcher("/login.jsp").forward(request, response);
 			}
 		

@@ -33,7 +33,7 @@
 				<td>${CarrinhoManager.getCarrinho().get(user.getCpf()).get(i).getNome()} </td>
 				<td>${CarrinhoManager.getCarrinho().get(user.getCpf()).get(i).getDescricao()} </td>
 				<td>${CarrinhoManager.getCarrinho().get(user.getCpf()).get(i).getPreco()} </td>
-				<td><a class="btn btn-danger" href="#"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a></td>
+				<td><a class="btn btn-danger" href="removeCarrinho?codigo=${CarrinhoManager.getCarrinho().get(user.getCpf()).get(i).getCodigo()}&email=${user.getCpf()}"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a></td>
 				</tr>
 				<c:set var="total" value="${total + CarrinhoManager.getCarrinho().get(user.getCpf()).get(i).getPreco()}"></c:set>				
 				</c:forEach>

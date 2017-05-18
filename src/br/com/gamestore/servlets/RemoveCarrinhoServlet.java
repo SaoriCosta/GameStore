@@ -24,13 +24,16 @@ public class RemoveCarrinhoServlet extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		String codigo, email;
+		String codigo, cpf;
 		
 		codigo = request.getParameter("codigo");
-		email = request.getParameter("email");
-		for(int i = 0; i < CarrinhoManager.getCarrinho().get(email).size(); i++){
-			if(CarrinhoManager.getCarrinho().get(email).get(i).getCodigo().equals(codigo)){
-				CarrinhoManager.getCarrinho().get(email).remove(i);
+		cpf = request.getParameter("cpf");
+		
+		JOptionPane.showMessageDialog(null, "EMAIL: "+cpf);
+		
+		for(int i = 0; i < CarrinhoManager.getCarrinho().get(cpf).size(); i++){
+			if(CarrinhoManager.getCarrinho().get(cpf).get(i).getCodigo().equals(codigo)){
+				CarrinhoManager.getCarrinho().get(cpf).remove(i);
 					break;
 			}
 		}

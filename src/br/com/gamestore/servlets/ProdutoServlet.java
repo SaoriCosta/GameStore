@@ -56,42 +56,42 @@ public class ProdutoServlet extends HttpServlet {
 
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String filePath = null;
-		req = request;
 		
 		String nome, descricao,codigo;
 		String preco;
 		boolean promocao;
-	
-		Produto produto = new Produto();
 		
-		nome = req.getParameter("nome");
-		descricao = req.getParameter("descricao");
-		preco = req.getParameter("preco");
-		promocao = Boolean.parseBoolean(req.getParameter("promocao")) ;
-		codigo = req.getParameter("codigo");
-		String id = req.getParameter("id");
+		nome = request.getParameter("nome");
+		descricao = request.getParameter("descricao");
+		preco = request.getParameter("preco");
+		promocao = Boolean.parseBoolean(request.getParameter("promocao")) ;
+		codigo = request.getParameter("codigo");
+		String id = request.getParameter("id");
 		
-	
+		if(nome == null || descricao == null || preco == null || codigo == null || codigo == null){
+			throw new CadastroException();
+		}
 		
-		Categoria cat = new Categoria();
-		cat.setId(Integer.parseInt(id));
-		cat.setNome(CategoriaManager.getCategoria().get(Integer.parseInt(id)).getNome());
-		
-		produto.setNome(nome);
-		produto.setDescricao(descricao);
-		produto.setCategoria(cat);
-		
-		produto.setPreco(Double.parseDouble(preco));
-		produto.setPromocao(promocao);
-		produto.setCodigo(codigo);
-        
-        produto.setImage(filePath);
-        
-    	ProdutoManager.addProduto(produto);
-		
-		request.getRequestDispatcher("/index.jsp").forward(request, response);
+		if(id != null){
+			Categoria cat = new Categoria();
+			cat.setId(Integer.parseInt(id));
+			cat.setNome(CategoriaManager.getCategoria().get(Integer.parseInt(id)).getNome());
+			
+			Produto produto = new Produto();
+			produto.setNome(nome);
+			produto.setDescricao(descricao);
+			produto.setCategoria(cat);
+			
+			produto.setPreco(Double.parseDouble(preco));
+			produto.setPromocao(promocao);
+			produto.setCodigo(codigo);
+	        
+	     
+	    	ProdutoManager.addProduto(produto);
+			
+			request.getRequestDispatcher("/index.jsp").forward(request, response);
 
+		}
 	}
 
 }

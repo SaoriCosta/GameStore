@@ -120,8 +120,7 @@
 									data-toggle="dropdown" role="button" aria-haspopup="true"
 									aria-expanded="false"> Configurações<span class="caret"></span></a>
 									<ul class="dropdown-menu">
-										<li><a href="#">Alterar dados</a></li>
-										<li><a href="#">Histórico de Compras</a></li>
+										<li><a href="editar-user.jsp">Alterar dados</a></li>
 										<li role="separator" class="divider"></li>
 										<li>
 											<c:url value="/usuarioLogout" var="usuarioLogout"></c:url>
