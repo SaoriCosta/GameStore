@@ -252,6 +252,8 @@
 						<div class="caption">
 
 							<form action="carrinho" method="Post">
+							<input type="hidden" name="image"
+									value="${bean.getProduto().get(i).getImage()}">
 								<input type="hidden" name="codigo"
 									value="${bean.getProduto().get(i).getCodigo()}"> <input
 									type="hidden" name="nome"
@@ -265,13 +267,13 @@
 
 
 								<h3>${bean.getProduto().get(i).getNome()}</h3>
-								<p>Descriçao:${bean.getProduto().get(i).getDescricao()}</p>
-								<p>Preço:${bean.getProduto().get(i).getPreco()}</p>
-								<p>Categoria:${bean.getProduto().get(i).getCategoria().getNome()}</p>
+								<h5>${bean.getProduto().get(i).getDescricao()}</h5>
+								<h5>R$ ${bean.getProduto().get(i).getPreco()}</h5>
+								<h5>Categoria:${bean.getProduto().get(i).getCategoria().getNome()}</h5>
 								<p>
 
 
-									<button type="submit" class="btn btn-warning" role="button">
+									<button type="submit" class="btn btn-success" role="button">
 										Adicionar ao Carrinho <span
 											class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>
 									</button>

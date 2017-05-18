@@ -195,7 +195,7 @@
 	
 	<div class="jumbotron">
 	<div class="container">
-		<h2 class="text-center">Editar Informações da Conta</h2>
+		<h2 class="text-center">Informações da Conta</h2>
 		<form class="form-group" action="usuario" method="post">
 			<input class="form-control" type="text" name="nome" placeholder="Nome"><br>
 			<input class="form-control"  type="email" name="email" placeholder="Email"><br>

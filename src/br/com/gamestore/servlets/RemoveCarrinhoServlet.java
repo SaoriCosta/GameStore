@@ -27,9 +27,7 @@ public class RemoveCarrinhoServlet extends HttpServlet {
 		String codigo, cpf;
 		
 		codigo = request.getParameter("codigo");
-		cpf = request.getParameter("cpf");
-		
-		JOptionPane.showMessageDialog(null, "EMAIL: "+cpf);
+		cpf = request.getParameter("cod");
 		
 		for(int i = 0; i < CarrinhoManager.getCarrinho().get(cpf).size(); i++){
 			if(CarrinhoManager.getCarrinho().get(cpf).get(i).getCodigo().equals(codigo)){

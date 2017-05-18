@@ -36,8 +36,9 @@ public class CarrinhoServlet extends HttpServlet {
 		boolean promocao;
 		Categoria categoria;
 		String codigo;
+		String image;
 		
-		
+		image = request.getParameter("image");
 		nome = request.getParameter("nome");
 		descricao = request.getParameter("descricao");
 		preco = Double.parseDouble(request.getParameter("preco"));
@@ -51,6 +52,7 @@ public class CarrinhoServlet extends HttpServlet {
 		p.setPreco(preco);
 		p.setPromocao(promocao);
 		p.setCodigo(codigo);
+		p.setImage(image);
 		
 		Usuario user = (Usuario)request.getSession().getAttribute("user");
 		if(CarrinhoManager.getCarrinho().get(user)!= null)

@@ -30,7 +30,7 @@ public class TesteListener implements ServletContextListener {
     	
     	
     	Categoria cat = new Categoria();
-    	cat.setNome("Ação");
+    	cat.setNome("Aï¿½ï¿½o");
     	cat.setId(1);
     	
     	CategoriaManager.addCategoria(cat);
@@ -52,17 +52,17 @@ public class TesteListener implements ServletContextListener {
     	p1.setDescricao("Oh loko");
     	p1.setPreco(123);
     	p1.setCategoria(cat);
-    	p1.setImage("images/Resident-Evil-7-Art.jpg");
+    	p1.setImage("images/gta.jpg");
     	
     	ProdutoManager.addProduto(p1);
     	
     	Produto p2 = new Produto();
-    	p2.setNome("Mass Effect: Andromeda");
+    	p2.setNome("Resident Evil 7");
     	p2.setCodigo("002");
     	p2.setDescricao("Oh loko");
     	p2.setPreco(123);
         p2.setCategoria(cat1);
-    	
+        p2.setImage("images/Resident-Evil-7-Art.jpg");
     	
     	ProdutoManager.addProduto(p2);
     	
@@ -72,7 +72,9 @@ public class TesteListener implements ServletContextListener {
     	p3.setDescricao("Oh loko");
     	p3.setPreco(123);
         p3.setCategoria(cat1);
-    	
+    	p3.setImage("images/maxresdefault.jpg");
+        
+        
     	ProdutoManager.addProduto(p3);
     	
     	
@@ -84,7 +86,9 @@ public class TesteListener implements ServletContextListener {
     	p4.setDescricao("Oh loko");
     	p4.setPreco(123);
         p4.setCategoria(cat2);
-    	
+    	p4.setImage("images/silent-hills-5.jpg");
+        
+        
     	ProdutoManager.addProduto(p4);
     	
     

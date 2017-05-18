@@ -7,20 +7,19 @@ import br.com.gamestore.entidades.Venda;
 
 public class VendaManager {
 	
-	private static TreeMap<Double, Venda> venda = new TreeMap<Double, Venda>();
+	private static HashMap<Double, Venda> venda = new HashMap<Double, Venda>();
 	private static int cod = 0;
 
-	public static TreeMap<Double, Venda> getVenda() {
+	public static HashMap<Double, Venda> getVenda() {
 		return venda;
 	}
 
-	public static void setVenda(TreeMap<Double, Venda> venda) {
+	public static void setVenda(HashMap<Double, Venda> venda) {
 		VendaManager.venda = venda;
 	}
 	
 	public static void addVenda(Venda vd){
-		
-		vd.setCodigo(cod++);
+
 		venda.put(vd.getCodigo(), vd);
 	}
 }

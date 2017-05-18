@@ -132,12 +132,13 @@
 		
 			
 		<c:forEach var="i" begin="0" end="${CarrinhoManager.getCarrinho().get(user.getCpf()).size()-1}">
-				<form action="venda" method="post">					
+				<form action="venda" method="post">	
+				<input type="hidden" name="s" value="${user.getCpf()}">				
 				<tr>	
 				<td>${CarrinhoManager.getCarrinho().get(user.getCpf()).get(i).getNome()} </td>
 				<td>${CarrinhoManager.getCarrinho().get(user.getCpf()).get(i).getDescricao()} </td>
 				<td>${CarrinhoManager.getCarrinho().get(user.getCpf()).get(i).getPreco()} </td>
-				<td><a class="btn btn-danger" href="removeCarrinho?codigo=${CarrinhoManager.getCarrinho().get(user.getCpf()).get(i).getCodigo()}&email=${user.getCpf()}"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a></td>
+				<td><a class="btn btn-danger" href="removeCarrinho?codigo=${CarrinhoManager.getCarrinho().get(user.getCpf()).get(i).getCodigo()}&cod=${user.getCpf()}"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a></td>
 				</tr>
 				<c:set var="total" value="${total + CarrinhoManager.getCarrinho().get(user.getCpf()).get(i).getPreco()}"></c:set>				
 				</c:forEach>
@@ -146,6 +147,7 @@
 						<td>
 						<b>Valor Total:</b></td><td><c:out value="${total}"></c:out></td>
 						<input type="hidden" name="preco_total" value="${total}">
+						
 				<tr>
 					<td></td>
 						<td></td>

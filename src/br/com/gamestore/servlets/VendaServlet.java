@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import br.com.gamestore.entidades.Produto;
+import br.com.gamestore.entidades.Usuario;
 import br.com.gamestore.entidades.Venda;
 import br.com.gamestore.persistences.CarrinhoManager;
 import br.com.gamestore.persistences.VendaManager;
@@ -53,6 +54,11 @@ public class VendaServlet extends HttpServlet {
 		venda.setProdutos(produto);
 		venda.setCodigo(codigo);
 		VendaManager.addVenda(venda);
+		
+		request.setAttribute("code", venda.getCodigo());
+		
+		Usuario user =(Usuario) request.getSession().getAttribute("user");
+		//CarrinhoManager.getCarrinho().get(user.getCpf()).clear();
 		
 		request.getRequestDispatcher("/final-compra.jsp").forward(request, response);
 		
