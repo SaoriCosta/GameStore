@@ -51,7 +51,7 @@
 			</button>
 		</c:if>
 	</div>
-	<div class="row">
+		<div class="row">
 		<div class="col-md-12">
 			<nav class="navbar navbar-inverse navbar-fixed-top"
 				style="background:#fff;color:#fff;"
@@ -73,10 +73,13 @@
 				<div class="collapse navbar-collapse"
 					id="bs-example-navbar-collapse-1">
 					<ul class="nav navbar-nav">
-						<li class="active"><a style="color: #fff;" href="#">Home<span
+						<li class="active"><a style="color: #fff;" href="#"><span class="glyphicon glyphicon-home"
+									aria-hidden="true"></span> Home<span
 								class="sr-only">(current)</span></a></li>
-						<li><a style="color: #000;" href="#">Sobre</a></li>
-						<li><a style="color: #000;" href="produtos.jsp">Produtos</a></li>
+								
+					
+						<li><a style="color: #000;" href="produtos.jsp"><span class="glyphicon glyphicon-gift"
+									aria-hidden="true"></span> Produtos</a></li>
 						
 						<li class="dropdown"><a id="p" style="color: #000;"
 							onclick="$('#p').css('color','#fff');" class="dropdown-toggle"
@@ -104,7 +107,8 @@
 
 					<ul class="nav navbar-nav navbar-right">
 						<li role="presentation"><a href="#">Promoções</a></li>
-						<li role="presentation"><a href="#contato_div">Contato</a></li>
+						<li role="presentation"><a href="#contato_div"><span class="glyphicon glyphicon-envelope"
+									aria-hidden="true"></span> Contato</a></li>
 
 						<li><c:if test="${user == null }">
 								<li><a style="background: #fff; color: #000;"
@@ -118,13 +122,14 @@
 
 								<li class="dropdown"><a href="#" class="dropdown-toggle"
 									data-toggle="dropdown" role="button" aria-haspopup="true"
-									aria-expanded="false"> Configurações<span class="caret"></span></a>
+									aria-expanded="false"><span class="glyphicon glyphicon-wrench" aria-hidden="true"></span> Configurações<span class="caret"></span></a>
 									<ul class="dropdown-menu">
-										<li><a href="editar-user.jsp">Alterar dados</a></li>
+										<li><a href="editar-user.jsp">
+										<span class="glyphicon glyphicon-transfer" aria-hidden="true"></span> Alterar dados</a></li>
 										<li role="separator" class="divider"></li>
 										<li>
 											<c:url value="/usuarioLogout" var="usuarioLogout"></c:url>
-											<a href="${usuarioLogout}">Logout</a>
+											<a href="${usuarioLogout}"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span> Logout</a>
 										</li>
 									</ul></li>
 								
@@ -144,6 +149,7 @@
 		</div>
 	</div>
 	</div>
+
 
 
 	<!-- ################################### Small modal -LOGIN @################################################3 -->
